@@ -1,5 +1,6 @@
 {
   "name": "monolith-exercise-react-app",
+  "homepage": "https://du5rte.github.io/monolith-exercise-react-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
