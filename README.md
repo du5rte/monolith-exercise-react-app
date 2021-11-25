@@ -1,6 +1,8 @@
 # Monolith Exercise - React
 Please perform this exercise in a private fork of this repository and share it with us here at Monolith.
 
+[![Test](https://github.com/du5rte/monolith-exercise-react-app/actions/workflows/test.yml/badge.svg)](https://github.com/du5rte/monolith-exercise-react-app/actions/workflows/test.yml)
+
 ## The task
 Create a React app that fetches data containing a list of card transactions for a group of users. Process the transactions and compute the final balance for each user. Display the final balances in the app in a sensible way for a fraud department to review.
 
@@ -24,3 +26,4 @@ Create a React app that fetches data containing a list of card transactions for 
 - [Day.js](https://day.js.org/)
 - [axios](https://axios-http.com/)
 - [Avatar Generator by Varld](https://gradient-avatar.glitch.me/)
+- [GitHub Actions](https://github.com/features/actions)
