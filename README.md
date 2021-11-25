@@ -6,7 +6,10 @@ Please perform this exercise in a private fork of this repository and share it w
 ## The task
 Create a React app that fetches data containing a list of card transactions for a group of users. Process the transactions and compute the final balance for each user. Display the final balances in the app in a sensible way for a fraud department to review.
 
-![screenshot](public/screenshot.png)
+[![Screenshot](public/screenshot.png)](https://du5rte.github.io/monolith-exercise-react-app/)
+
+## Demo
+[Click Here](https://du5rte.github.io/monolith-exercise-react-app/)
 
 ## Assumptions
 - A user can have multiple transactions.
