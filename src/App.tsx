@@ -11,31 +11,33 @@ import { computeUsersBalances } from "./utils/transactions";
 import TabletUsersBalances from "./components/TabletUsersBalances";
 import SelectOptions from "./components/SelectOptions";
 
+const root = process.env.PUBLIC_URL
+
 const options = [
   {
     value: "small",
     display: "Small",
-    url: "http://localhost:3000/transactions-small.json",
+    url: `${root}/transactions-small.json`,
   },
   {
     value: "medium",
     display: "Medium",
-    url: "http://localhost:3000/transactions-medium.json",
+    url: `${root}/transactions-medium.json`,
   },
   {
     value: "large",
     display: "Large",
-    url: "http://localhost:3000/transactions-large.json",
+    url: `${root}/transactions-large.json`,
   },
   {
     value: "xlarge",
     display: "X-Large (404)",
-    url: "http://localhost:3000/transactions-x-large.json",
+    url: `${root}/transactions-x-large.json`,
   },
   {
     value: "empty",
     display: "Empty",
-    url: "http://localhost:3000/transactions-empty.json",
+    url: `${root}/transactions-empty.json`,
   },
 ];
 
