@@ -99,10 +99,10 @@ describe("computeUsersBalances", () => {
   test("amounts to be summed up", () => {
     expect(computeUsersBalances(twoColumnsOfUsers)).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({user_id: '1', gbp: '-', usd: '-', eur: '-'}),
-        expect.objectContaining({user_id: '2', gbp: '-', usd: '-', eur: '+200'}),
-        expect.objectContaining({user_id: '3', gbp: '+10', usd: '+20', eur: '+30'}),
-        expect.objectContaining({user_id: '4', gbp: '+100', usd: '-', eur: '-100'}),
+        expect.objectContaining({user_id: '1', GBP: '0', USD: '0', EUR: '0'}),
+        expect.objectContaining({user_id: '2', GBP: '0', USD: '0', EUR: '+200'}),
+        expect.objectContaining({user_id: '3', GBP: '+10', USD: '+20', EUR: '+30'}),
+        expect.objectContaining({user_id: '4', GBP: '+100', USD: '0', EUR: '-100'}),
       ])
     );
   });
@@ -110,7 +110,7 @@ describe("computeUsersBalances", () => {
   test("lastActivity to be the latest", () => {
     expect(computeUsersBalances(twoColumnsOfUsers)).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({user_id: '3', lastActivity: '28-06-2021'}),
+        expect.objectContaining({user_id: '3', lastActivity: '2021-06-28T19:01:45Z'}),
       ])
     );
   });

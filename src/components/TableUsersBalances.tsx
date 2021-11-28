@@ -15,6 +15,7 @@ import Alert from "@mui/material/Alert";
 import { UserBalance } from "../types/schema";
 
 import Avatar from "./Avatar";
+import { formatZero } from "../utils/numbers";
 
 const skeletonData: UserBalance[] = [
   { user_id: '1', GBP: '0', USD: '0', EUR: '0', lastActivity: '' },
@@ -102,13 +103,13 @@ export default function TableUsersBalances(props: Props) {
                 {loading ? <Skeleton variant="text" width={300} /> : row.user_id}
               </TableCell>
               <TableCell align="right" sx={textColor(row.GBP)}>
-                {loading ? <Skeleton variant="text" /> : row.GBP}
+                {loading ? <Skeleton variant="text" /> : formatZero(row.GBP)}
               </TableCell>
               <TableCell align="right" sx={textColor(row.USD)}>
-                {loading ? <Skeleton variant="text" /> : row.USD}
+                {loading ? <Skeleton variant="text" /> : formatZero(row.USD)}
               </TableCell>
               <TableCell align="right" sx={textColor(row.EUR)}>
-                {loading ? <Skeleton variant="text" /> : row.EUR}
+                {loading ? <Skeleton variant="text" /> : formatZero(row.EUR)}
               </TableCell>
               <TableCell align="right">
                 {loading ? <Skeleton variant="text" /> : dayjs(row.lastActivity).format('DD-MM-YYYY')}
