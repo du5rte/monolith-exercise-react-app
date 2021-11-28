@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 
+import dayjs from 'dayjs'
+
 import Box from "@mui/material/Box";
 import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@mui/material/Table";
@@ -13,13 +15,14 @@ import Alert from "@mui/material/Alert";
 import { UserBalance } from "../types/schema";
 
 import Avatar from "./Avatar";
+import { formatZero } from "../utils/numbers";
 
 const skeletonData: UserBalance[] = [
-  { user_id: '1', gbp: '0', usd: '0', eur: '0', lastActivity: '' },
-  { user_id: '2', gbp: '0', usd: '0', eur: '0', lastActivity: '' },
-  { user_id: '3', gbp: '0', usd: '0', eur: '0', lastActivity: '' },
-  { user_id: '4', gbp: '0', usd: '0', eur: '0', lastActivity: '' },
-  { user_id: '5', gbp: '0', usd: '0', eur: '0', lastActivity: '' },
+  { user_id: '1', GBP: '0', USD: '0', EUR: '0', lastActivity: '' },
+  { user_id: '2', GBP: '0', USD: '0', EUR: '0', lastActivity: '' },
+  { user_id: '3', GBP: '0', USD: '0', EUR: '0', lastActivity: '' },
+  { user_id: '4', GBP: '0', USD: '0', EUR: '0', lastActivity: '' },
+  { user_id: '5', GBP: '0', USD: '0', EUR: '0', lastActivity: '' },
 ];
 
 function textColor(value: string) {
@@ -40,7 +43,7 @@ interface Props {
   error?: Error
 }
 
-export default function TabletUsersBalances(props: Props) {
+export default function TableUsersBalances(props: Props) {
   const { data, loading, error } = props;
 
   const rows = useMemo(() => {
@@ -99,17 +102,17 @@ export default function TabletUsersBalances(props: Props) {
               <TableCell component="th" scope="row">
                 {loading ? <Skeleton variant="text" width={300} /> : row.user_id}
               </TableCell>
-              <TableCell align="right" sx={textColor(row.gbp)}>
-                {loading ? <Skeleton variant="text" /> : row.gbp}
+              <TableCell align="right" sx={textColor(row.GBP)}>
+                {loading ? <Skeleton variant="text" /> : formatZero(row.GBP)}
               </TableCell>
-              <TableCell align="right" sx={textColor(row.usd)}>
-                {loading ? <Skeleton variant="text" /> : row.usd}
+              <TableCell align="right" sx={textColor(row.USD)}>
+                {loading ? <Skeleton variant="text" /> : formatZero(row.USD)}
               </TableCell>
-              <TableCell align="right" sx={textColor(row.eur)}>
-                {loading ? <Skeleton variant="text" /> : row.eur}
+              <TableCell align="right" sx={textColor(row.EUR)}>
+                {loading ? <Skeleton variant="text" /> : formatZero(row.EUR)}
               </TableCell>
               <TableCell align="right">
-                {loading ? <Skeleton variant="text" /> : row.lastActivity}
+                {loading ? <Skeleton variant="text" /> : dayjs(row.lastActivity).format('DD-MM-YYYY')}
               </TableCell>
             </TableRow>
           ))}

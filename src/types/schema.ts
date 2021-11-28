@@ -1,14 +1,16 @@
+type Currency = 'GBP' | 'USD' | 'EUR'
+
 export interface Transaction {
   user_id: string;
   timestamp: string;
-  currency: "GBP" | "USD" | "EUR";
+  currency: Currency;
   amount: string;
 }
 
 export interface UserBalance {
   user_id: string;
-  gbp: string;
-  usd: string;
-  eur: string;
+  GBP: string;
+  USD: string;
+  EUR: string;
   lastActivity: string;
 }
