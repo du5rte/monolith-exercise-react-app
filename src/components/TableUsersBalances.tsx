@@ -42,7 +42,7 @@ interface Props {
   error?: Error
 }
 
-export default function TabletUsersBalances(props: Props) {
+export default function TableUsersBalances(props: Props) {
   const { data, loading, error } = props;
 
   const rows = useMemo(() => {

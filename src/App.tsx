@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { Transaction } from "./types/schema";
 import { useFetch } from "./hooks/fetch";
 import { computeUsersBalances } from "./utils/transactions";
-import TabletUsersBalances from "./components/TabletUsersBalances";
+import TableUsersBalances from "./components/TableUsersBalances";
 import SelectOptions from "./components/SelectOptions";
 
 const root = process.env.PUBLIC_URL
@@ -70,7 +70,7 @@ function App() {
           />
         </Toolbar>
 
-        <TabletUsersBalances
+        <TableUsersBalances
           data={usersBalancesData}
           loading={loading}
           error={error}
