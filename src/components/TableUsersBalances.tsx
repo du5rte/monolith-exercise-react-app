@@ -38,7 +38,7 @@ function textColor(value: string) {
 }
 
 interface Props {
-  data: UserBalance[]
+  data?: UserBalance[]
   loading?: boolean
   error?: Error
 }
@@ -47,8 +47,12 @@ export default function TableUsersBalances(props: Props) {
   const { data, loading, error } = props;
 
   const rows = useMemo(() => {
-    if (loading) {
+    if (loading === true) {
       return skeletonData;
+    }
+
+    if (!data) {
+      return []
     }
 
     return data;
