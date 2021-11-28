@@ -1,8 +1,8 @@
 import avatar from "gradient-avatar";
 
 interface Props {
-  uid: string;
-  size: number;
+  uid?: string;
+  size?: number;
 }
 
 export default function Avatar(props: Props) {
@@ -17,9 +17,13 @@ export default function Avatar(props: Props) {
         backgroundColor: "lightgrey",
         overflow: "hidden",
       }}
-      {...(props.uid && {
+      {...(uid && {
         dangerouslySetInnerHTML: { __html: avatar(uid, size) },
       })}
     />
   );
+}
+
+Avatar.defaultProps = {
+  size: 30
 }
