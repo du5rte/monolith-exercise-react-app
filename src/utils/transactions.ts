@@ -1,27 +1,20 @@
 import Decimal from 'decimal.js'
-import dayjs from 'dayjs'
 
 import type { Transaction, UserBalance } from '../types/schema'
 
 import { formatNumber } from './numbers'
 
-interface UserBalanceRaw {
-  GBP: Decimal
-  USD: Decimal
-  EUR: Decimal
-  lastActivity: string          
-}
-
 export function computeUsersBalances(transactions: Transaction[]): UserBalance[] {
-  const users = new Map<string, UserBalanceRaw>()
+  const users = new Map<string, UserBalance>()
 
   transactions.forEach((transaction) => {
     // Initiate balances if user does not exist 
     if (!users.has(transaction.user_id)) {
       users.set(transaction.user_id, {
-        GBP: new Decimal(0),
-        USD: new Decimal(0),
-        EUR: new Decimal(0),
+        user_id: transaction.user_id,
+        GBP: '0',
+        USD: '0',
+        EUR: '0',
         lastActivity: transaction.timestamp,
       })
     }
@@ -30,8 +23,10 @@ export function computeUsersBalances(transactions: Transaction[]): UserBalance[]
     
     if (user) {
       // Add to the right user's currency blance
-      user[transaction.currency] = user[transaction.currency].add(transaction.amount)
       
+      user[transaction.currency] = formatNumber(
+        new Decimal(user[transaction.currency]).add(transaction.amount)
+      )
 
       // Overwrite date if latest
       // HACK: JavaScript string comparison is able to do this 
@@ -44,13 +39,7 @@ export function computeUsersBalances(transactions: Transaction[]): UserBalance[]
     return users
   })
 
-  const arr = [...users].map(([key, obj]) => ({
-    user_id: key,
-    gbp: formatNumber(obj.GBP),
-    usd: formatNumber(obj.USD),
-    eur: formatNumber(obj.EUR),
-    lastActivity: dayjs(obj.lastActivity).format('DD-MM-YYYY')
-  }))
+  const arr = [...users].map(([_key,obj]) => obj)
 
   return arr
 }
